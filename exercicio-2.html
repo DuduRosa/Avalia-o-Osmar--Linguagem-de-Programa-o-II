@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculador de média</title>
+    <style>
+        body {
+            margin: 0%;
+            background-color: cadetblue;
+        }
+
+        #divNumeros {
+
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            margin-top: 10%;
+
+        }
+
+        #divCalcular {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            margin-top: 5%;
+        }
+
+        #divResult{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            margin-top: 5%;
+            margin-bottom:10% ;
+        }
+
+        #border{
+            border-style: solid;
+            border-width: 2px;
+            margin-left: 40%;
+            margin-right: 40%;
+            margin-top: 10%;
+            background-color: white;
+        }
+        
+        #divH1{
+            border-style: solid;
+            border-width: 2px;
+            margin-left: 40%;
+            margin-right: 40%;
+            margin-top: 10%;
+            background-color: white;
+            text-align: center;
+
+        }
+
+    </style>
+</head>
+
+<body>
+    <header></header>
+    <main>
+        <section>
+            <div id="border">
+                <div id="divNumeros">
+                    <input type="number" id="numero1" placeholder="Digite a Primeira Nota">
+                    <input type="number" id="numero2" placeholder="Digite a Segunda Nota">
+                    <input type="number" id="numero3" placeholder="Digite a Terceira Nota">
+                </div>
+                <div id="divCalcular">
+                    <button onclick="media()">Calcular</button>
+                </div>
+                <div id="divResult">
+                    <input type="number" readonly id="result" placeholder="Resultado">
+                </div>
+            </div>
+            <div id="divH1">
+                <h1>Calculador de Média</h1>
+            </div>
+        </section>
+    </main>
+    <footer></footer>
+    <script>
+
+        function media() {
+
+            var numero1 = document.getElementById('numero1').value;
+            var numero2 = window.document.getElementById('numero2').value;
+            var numero3 = window.document.getElementById('numero3').value;
+            var result = window.document.getElementById('result');
+
+            numero1 = Number(numero1);
+
+            numero2 = Number(numero2);
+
+            numero3 = Number(numero3);
+
+            var confirmacao = true; 
+
+            if(numero1 > 10){
+                window.alert('Primeiro Numero ultrapassa o limite de nota');
+                confirmacao = false;
+            }
+            if(numero2 > 10){
+                window.alert('Segundo Numero ultrapassa o limite de nota');
+                confirmacao = false;
+            }
+            if(numero3 > 10){
+                window.alert('Terceiro Numero ultrapassa o limite de nota');
+                confirmacao = false;
+            }
+
+            var valorResultado = (numero1 + numero2 + numero3) / 3;
+
+
+            if(confirmacao == true){
+                result.value = valorResultado;
+            }
+            else{
+                window.alert('Digite Novamente!');
+            }
+   
+
+        }
+
+    </script>
+</body>
+
+</html>

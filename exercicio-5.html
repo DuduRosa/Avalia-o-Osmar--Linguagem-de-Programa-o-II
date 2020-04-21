@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro de pessoas</title>
+    <style>
+        body {
+            background-color: whitesmoke;
+            margin: 0;
+        }
+
+        #divInputs {
+            width: 528px;
+            margin-left: 5%;
+            margin-top: 5%;
+            margin-right: 40%;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            height: 500px;
+        }
+
+        .inputs {
+            width: 500px;
+            margin: 4%;
+            height: 25px;
+            border-radius: 5px;
+            border-style: groove;
+        }
+
+        #btnCadastrar {
+            display: block;
+            margin: 50px auto;
+        }
+
+        #divImg {
+            float: right;
+            width: 500px;
+            margin-top: 20%;
+        }
+
+        #formulario {
+            width: 550px;
+            margin-right: 50px;
+        }
+
+        #divFlex {
+            display: flex;
+            flex-direction: row;
+        }
+
+        .inputsVerdadeiro {
+            border-color: rgb(33, 216, 33);
+        }
+
+        .inputsFalso {
+            border-color: rgb(216, 33, 33);
+        }
+
+        #fundo {
+            opacity: 0.8;
+            background-color: #000;
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            z-index: 98;
+            top: 0;
+            left: 0;
+            display: none;
+        }
+
+        #modal {
+            width: 400px;
+            height: 250px;
+            position: fixed;
+            margin: auto;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            border-style: solid;
+            border-width: 4px;
+            border-radius: 10px;
+            background-color:  rgb(33, 216, 33);
+            border-color: rgb(21, 146, 21);
+            z-index: 99;
+            display: none;
+        }
+
+        #pEfetuado{
+            
+            padding-top: 18%;
+            text-align: center;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            font-size: 15pt;
+            color: whitesmoke;
+        }
+
+    </style>
+</head>
+
+<body>
+    <header></header>
+    <main>
+        <section>
+            <div id="formulario">
+                <div id="divFlex">
+                    <div id="divInputs">
+                        <label for="">Nome</label>
+                        <input type="text" placeholder="Digite seu Nome" class="inputs" id="nome" required>
+                        <label for="">Idade</label>
+                        <input type="number" placeholder="Digite sua Idade" class="inputs" id="idade" required>
+                        <label for="">E-Mail</label>
+                        <input type="email" placeholder="email@exemple.com" class="inputs" id="email" required>
+                        <label for="">Senha</label>
+                        <input type="password" name="" id="senha" placeholder="******" class="inputs" required>
+                        <button id="btnCadastrar" onclick="cadastrar()">Cadastrar</button>
+                    </div>
+                    <div id="divImg">
+                        <img src="img/exe5/equipe.png" alt="">
+                    </div>
+                    <div id="fundo"></div>
+                    <div id="modal">
+                        <p id="pEfetuado">Cadastro efetuado com sucesso</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer></footer>
+
+    <script>
+        function cadastrar() {
+
+            //VALIDACAO
+            var emailVerdadeiro = false;
+            var idadeVerdadeiro = false;
+            var nomeVerdadeiro = false;
+            var senhaVerdadeira = false;
+
+            //ELEMENTOS
+            var SenhaNValue = window.document.getElementById('senha');
+            var nome = window.document.getElementById('nome');
+            var idade = window.document.getElementById('idade');
+            var email = window.document.getElementById('email');
+            var senha = window.document.getElementById('senha').value;
+
+            //REGEX
+            var validaNome = nome.value.match(/^[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ ]+$/);
+            var validaIdade = idade.value.match(/[0-9]+/);
+            var validaEmail = email.value.match(/[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/gi);
+
+
+
+            //VALIDA NOME
+            if (!nome.value || !validaNome) {
+                nome.classList.add('inputsFalso');
+                window.alert('Nome só pode conter Letras e Espaços, Não pode conter caracteres especiais!')
+            }
+            else {
+                nome.classList.add('inputsVerdadeiro');
+                nomeVerdadeiro = true;
+            }
+
+
+            //VALIDA IDADE
+            if (!idade.value || !validaIdade) {
+                idade.classList.add('inputsFalso');
+                window.alert('Idade só pode conter numeros. Não pode conter caracteres especiais!')
+            }
+            else {
+                idade.classList.add('inputsVerdadeiro');
+                idadeVerdadeiro = true;
+            }
+
+            //VALIDA EMAIL
+            if (!email.value || !validaEmail) {
+                email.classList.add('inputsFalso');
+                window.alert('Email só pode conter numeros e @. Não pode conter outros caracteres especiais!')
+            }
+            else {
+                email.classList.add('inputsVerdadeiro');
+                emailVerdadeiro = true;
+            }
+
+            //VALIDA SENHA
+            var tamanho = senha.length;
+
+            if (tamanho <= 7) {
+
+                SenhaNValue.classList.add('inputsFalso');
+                window.alert('Senha deve conter no minimo 8 caracteres');
+            }
+            else {
+
+                SenhaNValue.classList.add('inputsVerdadeiro');
+                senhaVerdadeira = true;
+            }
+
+
+
+            //CHAMA DIV FLUTUANTE
+            if (nomeVerdadeiro && idadeVerdadeiro && emailVerdadeiro && senhaVerdadeira == true) {
+
+
+                //VALIDACAO CSS DAS DIVS VERDADEIRAS 
+
+                SenhaNValue.classList.add('inputsVerdadeiro');
+                nome.classList.add('inputsVerdadeiro');
+                idade.classList.add('inputsVerdadeiro');
+                email.classList.add('inputsVerdadeiro');
+
+                divConfirmacao();
+            }
+        }
+
+        function divConfirmacao() {
+
+            document.getElementById('fundo').style.display = 'block';
+            document.getElementById('modal').style.display = 'block';
+
+        }
+
+    </script>
+</body>
+
+<script>
+
+</script>
+
+</html>

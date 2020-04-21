@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gerenciador de atividades</title>
+    <style>
+        body {
+            margin: 0;
+            background-color: bisque;
+        }
+
+        #divText {
+            width: 500px;
+            margin: 0 auto;
+
+        }
+
+        #inputText {
+            width: 500px;
+            height: 50px;
+            border-radius: 10px;
+            border-style: ridge;
+            text-align: center;
+            margin-top: 5%;
+            background-color: whitesmoke;
+        }
+
+        #divBtnAcre {
+            width: 87.13px;
+            height: 21px;
+            margin: 10px auto;
+        }
+
+        ul {
+            padding: 0;
+            list-style-type: none;
+        }
+
+        .liAlta {
+            width: 500px;
+            height: 100px;
+            border-style: solid;
+            border-width: 2px;
+            background-color: whitesmoke;
+            border-color: red;
+            margin: 20px auto;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .liMedia {
+            width: 500px;
+            height: 100px;
+            border-style: solid;
+            border-width: 2px;
+            background-color: whitesmoke;
+            border-color: yellow;
+            margin: 20px auto;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .liBaixa {
+            width: 500px;
+            height: 100px;
+            border-style: solid;
+            border-width: 2px;
+            background-color: whitesmoke;
+            border-color: blue;
+            margin: 20px auto;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        #divImpor {
+            width: 112px;
+            height: 19px;
+            margin: 0 auto;
+        }
+
+        #legenda1{
+            
+        }
+    </style>
+</head>
+
+<body>
+    <header></header>
+    <main>
+        <section>
+            <div id="divText">
+                <input type="text" placeholder="Insira sua Atividade!" id="inputText">
+            </div>
+            <div id="divBtnAcre">
+                <button onclick="acrescentar()">Acrescentar</button>
+            </div>
+            <div id="divImpor">
+                <select name="importancia" id="importancia">
+                    <option value="imporOP">--Importância--</option>
+                    <option value="alta">Alta</option>
+                    <option value="media">Média</option>
+                    <option value="baixa">Baixa</option>
+                </select>
+            </div>
+            <div id="legendaPrincipal">
+                <div id="legenda1"></div>
+                <div id="legenda2"></div>
+                <div id="legenda3"></div>
+            </div>
+            <div>
+                <ul id="lista">
+                </ul>
+            </div>
+        </section>
+    </main>
+    <footer></footer>
+
+    <script>
+        function acrescentar() {
+
+            var opcao = window.document.getElementById('importancia').selectedIndex;
+
+            if (opcao == 0) {
+                window.alert('Por Favor selecione a importância da atividade!');
+            }
+
+            if (opcao == 1) {
+
+                // Acrescenta a lista
+                var valor = window.document.getElementById('inputText').value;
+                var li = document.createElement("LI");
+                var ul = document.createElement("UL");
+                var textoLi = document.createTextNode(valor);
+                li.appendChild(textoLi);
+                ul.appendChild(li);
+                li.classList.add("liAlta");
+                document.getElementById('lista').appendChild(ul);
+
+            }
+
+            else if (opcao == 2) {
+                // Acrescenta a lista
+                var valor = window.document.getElementById('inputText').value;
+                var li = document.createElement("LI");
+                var ul = document.createElement("UL");
+                var textoLi = document.createTextNode(valor);
+                li.appendChild(textoLi);
+                ul.appendChild(li);
+                li.classList.add("liMedia");
+                document.getElementById('lista').appendChild(ul);
+
+            }
+
+            else if (opcao == 3) {
+                // Acrescenta a lista
+                var valor = window.document.getElementById('inputText').value;
+                var li = document.createElement("LI");
+                var ul = document.createElement("UL");
+                var textoLi = document.createTextNode(valor);
+                li.appendChild(textoLi);
+                ul.appendChild(li);
+                li.classList.add("liBaixa");
+                document.getElementById('lista').appendChild(ul);
+            
+            }
+
+        }
+    </script>
+</body>
+
+</html>

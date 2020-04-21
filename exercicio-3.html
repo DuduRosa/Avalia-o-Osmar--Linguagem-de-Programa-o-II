@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loteria</title>
+    <style>
+        #numSorteados {
+
+            margin: 0 auto;
+            width: 1060px;
+        }
+
+        #botao {
+
+            width: 50px;
+            height: 21px;
+            margin: 0 auto;
+            margin-top: 2%;
+            margin-bottom: 2%;
+
+        }
+
+        #divImg {
+
+            width: 150px;
+            height: 150px;
+            margin: 50px auto;
+
+        }
+
+        img {
+            width: 150px;
+            height: 150px;
+        }
+
+        #divH1 {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            font-size: 20pt;
+            border-style: solid;
+            border-width: 2px;
+            text-align: center;
+            width: 250px;
+            margin: 0 auto;
+            margin-top: 5%;
+        }
+
+        body {
+            margin: 0;
+            background-color: bisque;
+        }
+
+        #numAnteriores {
+            width: 1060px;
+            margin: 0 auto;
+            margin-top: 3%;
+            margin-bottom: 5%;
+        }
+
+        .divH2{
+            width: 210px;
+            margin: 0 auto;
+            margin-bottom: 3%;
+        }
+    </style>
+</head>
+
+<body>
+    <header></header>
+    <main>
+        <section>
+            <div id="divH1">
+                <h1>Loteria</h1>
+            </div>
+            <div id="divImg">
+                <img src="img/exe3/aleatoria.png" alt="">
+            </div>
+            <div class="divH2">
+                <h2>Numeros Sorteados</h2>
+            </div>
+            <div id="numSorteados">
+                <input type="number" readonly id="num1">
+                <input type="number" readonly id="num2">
+                <input type="number" readonly id="num3">
+                <input type="number" readonly id="num4">
+                <input type="number" readonly id="num5">
+                <input type="number" readonly id="num6">
+            </div>
+            <div id="botao">
+                <button onclick="gerar()">Gerar</button>
+            </div>
+            <div class="divH2">
+                <h2>Numeros Anteriores</h2>
+            </div>
+            <div id="numAnteriores">
+                <input type="number" readonly id="num1A">
+                <input type="number" readonly id="num2A">
+                <input type="number" readonly id="num3A">
+                <input type="number" readonly id="num4A">
+                <input type="number" readonly id="num5A">
+                <input type="number" readonly id="num6A">
+            </div>
+        </section>
+    </main>
+    <footer></footer>
+    <script>
+
+        function gerar() {
+
+            var num1 = window.document.getElementById('num1');
+            var num2 = window.document.getElementById('num2');
+            var num3 = window.document.getElementById('num3');
+            var num4 = window.document.getElementById('num4');
+            var num5 = window.document.getElementById('num5');
+            var num6 = window.document.getElementById('num6');
+
+            var ale = [];
+
+            for (let index = 0; index < 6; index++) {
+
+                ale[index] = Math.floor(Math.random() * 100) % 61;
+
+            }
+
+            num1A.value = num1.value;
+            num2A.value = num2.value;
+            num3A.value = num3.value;
+            num4A.value = num4.value;
+            num5A.value = num5.value;
+            num6A.value = num6.value;
+
+            var comparacao = true;
+
+            if (ale[0] == ale[1]) {
+                comparacao = false;
+            }
+            if (ale[0] == ale[2]) {
+                comparacao = false;
+            }
+            if (ale[0] == ale[3]) {
+                comparacao = false;
+            }
+            if (ale[0] == ale[4]) {
+                comparacao = false;
+            }
+            if (ale[0] == ale[5]) {
+                comparacao = false;
+            }
+
+
+            if (ale[1] == ale[2]) {
+                comparacao = false;
+            }
+            if (ale[1] == ale[3]) {
+                comparacao = false;
+            }
+            if (ale[1] == ale[4]) {
+                comparacao = false;
+            }
+            if (ale[1] == ale[5]) {
+                comparacao = false;
+            }
+
+
+
+            if (ale[2] == ale[3]) {
+                comparacao = false;
+            }
+            if (ale[2] == ale[4]) {
+                comparacao = false;
+            }
+            if (ale[2] == ale[5]) {
+                comparacao = false;
+            }
+
+
+
+            if (ale[3] == ale[4]) {
+                comparacao = false;
+            }
+            if (ale[3] == ale[5]) {
+                comparacao = false;
+            }
+
+
+
+            if (ale[4] == ale[5]) {
+                comparacao = false;
+            }
+
+
+            if (comparacao == true) {
+
+                num1.value = ale[0];
+                num2.value = ale[1];
+                num3.value = ale[2];
+                num4.value = ale[3];
+                num5.value = ale[4];
+                num6.value = ale[5];
+
+                ale = [];
+            }
+
+
+            else {
+                gerar();
+            }
+        }
+
+    </script>
+</body>
+
+</html>
